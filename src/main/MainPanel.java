@@ -18,20 +18,17 @@ import javafx.stage.Stage;
 public class MainPanel extends GridPane {
 
 	private CanvasPanel canvasPanel;
-	private SortingModel model;
 	
 	private Stage stage;
 	
-	public MainPanel(Stage stage, SortingModel model) {
+	public MainPanel(Stage stage) {
 		
 		this.stage = stage;
-		this.model = model;
 		
 		this.setPadding(new Insets(16));
 		this.setVgap(16);
 
 		canvasPanel = new CanvasPanel();
-		this.model.addObserver(canvasPanel);
 		this.add(canvasPanel, 0, 0);
 		
 		VBox UIElements = this.makeUIElements();
@@ -97,7 +94,7 @@ public class MainPanel extends GridPane {
 		delayHBox.getChildren().addAll(delayLabel, delayInput);
 		
 		Button sortButton = new Button("Sort");
-		sortButton.setOnAction(new SortButtonHandler(this.model, sortingAlgorithmComboBox, arraySizeInput, delayInput));
+		sortButton.setOnAction(new SortButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput, delayInput));
 		
 		
 		vBox.getChildren().addAll(sortingAlgorithmHBox, arraySizeHBox, delayHBox, sortButton);

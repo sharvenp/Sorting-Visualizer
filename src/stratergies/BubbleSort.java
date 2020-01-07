@@ -5,7 +5,7 @@ import utils.DelayCreator;
 public class BubbleSort extends SortStratergy {
 
 	@Override
-	public void run() {
+	public void sort() {
 		boolean sorted = false;
 		
 		while (!sorted) {

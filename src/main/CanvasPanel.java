@@ -3,6 +3,7 @@ package main;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import stratergies.SortStratergy;
 import utils.Observable;
 import utils.Observer;
 
@@ -27,7 +28,7 @@ public class CanvasPanel extends Canvas implements Observer {
 		this.resetCanvas();
 		
 		
-		double[] array = ((SortingModel) o).getArray();
+		double[] array = ((SortStratergy) o).getArray();
 		double rectangleWidth = (double) Settings.canvasWidth / (double) array.length;
 		double maxHeight = Double.MIN_VALUE;
 		
@@ -36,7 +37,11 @@ public class CanvasPanel extends Canvas implements Observer {
 				maxHeight = array[i];
 		}
 		
-		this.gc.setFill(Settings.barColor);
+		if (((SortStratergy) o).getSortStatus() == 2) {
+			this.gc.setFill(Settings.sortedColor);
+		} else {
+			this.gc.setFill(Settings.barColor);			
+		}
 		
 		for (int i = 0; i < array.length; i++) {
 			double x = i * rectangleWidth;

@@ -1,23 +1,26 @@
 package controllers;
 
+import java.util.Set;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import main.SortingModel;
+import main.CanvasPanel;
+import stratergies.CurrentSortStratergy;
 import stratergies.SortStratergy;
 import stratergies.SortStratergyFactory;
 import utils.AlertBox;
 
 public class SortButtonHandler implements EventHandler<ActionEvent> {
 
-	private SortingModel model;
+	private CanvasPanel canvasPanel;
 	private ComboBox<String> sortingAlgorithm;
 	private TextField arraySizeInput;
 	private TextField delayInput;
 	
-	public SortButtonHandler(SortingModel model, ComboBox<String> sortingAlgorithm, TextField arraySize, TextField delayInput) {
-		this.model = model;
+	public SortButtonHandler(CanvasPanel canvasPanel, ComboBox<String> sortingAlgorithm, TextField arraySize, TextField delayInput) {
+		this.canvasPanel = canvasPanel;
 		
 		this.sortingAlgorithm = sortingAlgorithm;
 		this.arraySizeInput = arraySize;
@@ -36,6 +39,7 @@ public class SortButtonHandler implements EventHandler<ActionEvent> {
 			int a = 1 / size; // Zero check
 		} catch (Exception exception) {
 			AlertBox.showAlert("Invalid Input", "", "Invalid input for the array size.", AlertBox.errorType());
+			return;
 		}
 		
 		long delay = 0;
@@ -44,15 +48,21 @@ public class SortButtonHandler implements EventHandler<ActionEvent> {
 			delay = Long.parseLong(this.delayInput.getText());
 		} catch (Exception exception) {
 			AlertBox.showAlert("Invalid Input", "", "Invalid input for the delay.", AlertBox.errorType());
+			return;
 		}
 		
-		SortStratergy sortStratergy = SortStratergyFactory.getStratergy(selectedAlgoritm);
+		if (CurrentSortStratergy.getInstance().getCurrentStratergy() == null) 
+			SortStratergyFactory.setCurrentStratergy(selectedAlgoritm);
+		
+		if (size != 0 && CurrentSortStratergy.getInstance().getCurrentStratergy() != null && 
+				CurrentSortStratergy.getInstance().getCurrentStratergy().getSortStatus() != 1) {
 
-		if (size != 0 && sortStratergy != null) {
+			SortStratergyFactory.setCurrentStratergy(selectedAlgoritm);
+			SortStratergy sortStratergy = CurrentSortStratergy.getInstance().getCurrentStratergy();
 			sortStratergy.setDelay(delay);
 			sortStratergy.generateShuffledArray(size);
 			
-			sortStratergy.addObserver(this.model);
+			sortStratergy.addObserver(this.canvasPanel);
 			Thread t = new Thread(sortStratergy);
 	        t.start();
 		}

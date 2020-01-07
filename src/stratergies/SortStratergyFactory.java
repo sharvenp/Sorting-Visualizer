@@ -2,18 +2,21 @@ package stratergies;
 
 public class SortStratergyFactory {
 
-	public static SortStratergy getStratergy (String stratergy) {
+	public static void setCurrentStratergy (String stratergyString) {
 		
-		switch(stratergy) {
-			
+		SortStratergy stratergy = null;
+
+		switch(stratergyString) {
 			case "Selection":
-				return new SelectionSort();
+				stratergy = new SelectionSort();
+				break;
 			case "Bubble":
-				return new BubbleSort();
+				stratergy = new BubbleSort();
+				break;
 				
-		}
+		}		
 		
-		return null;
+		CurrentSortStratergy.getInstance().setStratergy(stratergy);
 	}
 	
 }

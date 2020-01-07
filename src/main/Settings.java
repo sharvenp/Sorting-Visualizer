@@ -9,8 +9,9 @@ public class Settings {
 	public static int canvasHeight = 600;
 	
 	// Sorting Algorithms
-	public static String[] algorithms = {"Selection", "Insertion", "Bubble"};
+	public static String[] algorithms = {"Bubble", "Selection", "Insertion"};
 	
 	// Colors
 	public static Color barColor = Color.rgb(255, 150, 150);
+	public static Color sortedColor = Color.rgb(150, 255, 150);
 }

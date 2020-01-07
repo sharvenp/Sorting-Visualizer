@@ -3,7 +3,7 @@ package stratergies;
 public class SelectionSort extends SortStratergy {
 
 	@Override
-	public void run() {
+	public void sort() {
 		this.notifyObservers();
 	}
 }

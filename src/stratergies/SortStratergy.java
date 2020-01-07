@@ -3,12 +3,11 @@ package stratergies;
 import utils.Observable;
 import java.util.Random;
 
-import main.Settings;
-
 public abstract class SortStratergy extends Observable implements Runnable {
 
 	protected double[] sortingArray;
 	protected long delay;
+	protected int sortStatus = 0;
 	
 	public void generateShuffledArray(int size) {
 		
@@ -35,4 +34,17 @@ public abstract class SortStratergy extends Observable implements Runnable {
 	public double[] getArray() {
 		return this.sortingArray;
 	}
+	
+	public int getSortStatus() {
+		return this.sortStatus;
+	}
+	
+	@Override
+	public void run() {
+		this.sortStatus = 1;
+		this.sort();
+		this.sortStatus = 2;
+	}
+	
+	public abstract void sort();
 }
