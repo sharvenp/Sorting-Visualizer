@@ -5,7 +5,7 @@ import utils.DelayCreator;
 public class BubbleSort extends SortStratergy {
 
 	@Override
-	public void sort() {
+	public void run() {
 		boolean sorted = false;
 		
 		while (!sorted) {
@@ -18,11 +18,10 @@ public class BubbleSort extends SortStratergy {
 					this.sortingArray[i+1] = this.sortingArray[i];
 					this.sortingArray[i] = temp;
 					sorted = false;
+					this.notifyObservers();			
+					DelayCreator.delay(this.delay);
 				}
-				this.notifyObservers();
-//				DelayCreator.delay(this.delay);
 			}
-			
 		}
 
 	}

@@ -9,9 +9,8 @@ public class Settings {
 	public static int canvasHeight = 600;
 	
 	// Sorting Algorithms
-	public static int shuffleCycles = 100000;
 	public static String[] algorithms = {"Selection", "Insertion", "Bubble"};
 	
 	// Colors
-	public static Color barColor = Color.rgb(200, 200, 200);
+	public static Color barColor = Color.rgb(255, 150, 150);
 }
