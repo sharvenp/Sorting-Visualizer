@@ -4,8 +4,16 @@ public class SortStratergyFactory {
 
 	public static SortStratergy getStratergy (String stratergy) {
 		
-		return new SelectionSort();
+		switch(stratergy) {
+			
+			case "Selection":
+				return new SelectionSort();
+			case "Bubble":
+				return new BubbleSort();
+				
+		}
 		
+		return null;
 	}
 	
 }

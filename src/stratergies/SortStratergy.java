@@ -3,10 +3,12 @@ package stratergies;
 import utils.Observable;
 import java.util.Random;
 
+import main.Settings;
+
 public abstract class SortStratergy extends Observable {
 
-	private double[] sortingArray;
-	private double delay;
+	protected double[] sortingArray;
+	protected long delay;
 	
 	public void generateShuffledArray(int size) {
 		
@@ -18,7 +20,7 @@ public abstract class SortStratergy extends Observable {
 		
 		Random r = new Random();
 		
-		for (int shuffleCycles = 0; shuffleCycles < 10000; shuffleCycles++) {
+		for (int shuffleCycles = 0; shuffleCycles < Settings.shuffleCycles; shuffleCycles++) {
 			int randomIndex1 = r.nextInt(this.sortingArray.length);
 			int randomIndex2 = r.nextInt(this.sortingArray.length);
 			double temp = this.sortingArray[randomIndex1];
@@ -27,7 +29,7 @@ public abstract class SortStratergy extends Observable {
 		}
 	}
 	
-	public void setDelay(double delay) {
+	public void setDelay(long delay) {
 		this.delay = delay;
 	}
 	

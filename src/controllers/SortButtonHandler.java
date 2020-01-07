@@ -40,16 +40,17 @@ public class SortButtonHandler implements EventHandler<ActionEvent> {
 			AlertBox.showAlert("Invalid Input", "", "Invalid input for the array size.", AlertBox.errorType());
 		}
 		
-		double delay = 0;
+		long delay = 0;
 		
 		try {
-			delay = Double.parseDouble(this.delayInput.getText());
+			delay = Long.parseLong(this.delayInput.getText());
 		} catch (Exception exception) {
 			AlertBox.showAlert("Invalid Input", "", "Invalid input for the delay.", AlertBox.errorType());
 		}
 		
-		if (size != 0) {
-			SortStratergy sortStratergy = SortStratergyFactory.getStratergy(selectedAlgoritm);
+		SortStratergy sortStratergy = SortStratergyFactory.getStratergy(selectedAlgoritm);
+
+		if (size != 0 && sortStratergy != null) {
 			sortStratergy.setDelay(delay);
 			sortStratergy.generateShuffledArray(size);
 			
