@@ -1,5 +1,6 @@
 package main;
 
+import stratergies.SortStratergy;
 import utils.Observable;
 import utils.Observer;
 

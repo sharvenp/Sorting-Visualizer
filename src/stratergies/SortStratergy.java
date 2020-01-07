@@ -1,6 +1,7 @@
-package main;
+package stratergies;
 
 import utils.Observable;
+import java.util.Random;
 
 public abstract class SortStratergy extends Observable {
 
@@ -15,8 +16,15 @@ public abstract class SortStratergy extends Observable {
 			sortingArray[i] = i+1;
 		}
 		
-			
+		Random r = new Random();
 		
+		for (int shuffleCycles = 0; shuffleCycles < 10000; shuffleCycles++) {
+			int randomIndex1 = r.nextInt(this.sortingArray.length);
+			int randomIndex2 = r.nextInt(this.sortingArray.length);
+			double temp = this.sortingArray[randomIndex1];
+			this.sortingArray[randomIndex1] = this.sortingArray[randomIndex2];
+			this.sortingArray[randomIndex2] = temp;
+		}
 	}
 	
 	public void setDelay(double delay) {

@@ -97,10 +97,10 @@ public class MainPanel extends GridPane {
 		delayHBox.getChildren().addAll(delayLabel, delayInput);
 		
 		Button sortButton = new Button("Sort");
-		sortButton.setOnAction(new SortButtonHandler());
+		sortButton.setOnAction(new SortButtonHandler(this.model, sortingAlgorithmComboBox, arraySizeInput, delayInput));
 		
 		
-		vBox.getChildren().addAll(sortingAlgorithmHBox, arraySizeHBox, delayHBox);
+		vBox.getChildren().addAll(sortingAlgorithmHBox, arraySizeHBox, delayHBox, sortButton);
 		
 		return vBox;
 		

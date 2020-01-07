@@ -1,10 +1,10 @@
-package main;
+package stratergies;
 
 public class SortStratergyFactory {
 
 	public static SortStratergy getStratergy (String stratergy) {
 		
-		return null;
+		return new SelectionSort();
 		
 	}
 	
