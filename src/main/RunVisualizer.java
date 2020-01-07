@@ -19,6 +19,8 @@ public class RunVisualizer extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		System.out.println("run");
+		SortingModel model = new SortingModel();
+		MainPanel mainPanel = new MainPanel(stage, model);
+		
 	}
 }
