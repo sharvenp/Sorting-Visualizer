@@ -63,7 +63,7 @@ public class MainPanel extends GridPane {
 		HBox arraySizeHBox = new HBox();
 		arraySizeHBox.setSpacing(5);
 		Label arraySizeLabel = new Label("Array Size:");
-		final TextField arraySizeInput = new TextField();
+		final TextField arraySizeInput = new TextField("100");
 		arraySizeInput.setPrefWidth(100);
 		arraySizeInput.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
@@ -80,7 +80,7 @@ public class MainPanel extends GridPane {
 		HBox delayHBox = new HBox();
 		arraySizeHBox.setSpacing(5);
 		Label delayLabel = new Label("Step Delay:");
-		final TextField delayInput = new TextField();
+		final TextField delayInput = new TextField("1");
 		delayInput.setPrefWidth(100);
 		delayInput.textProperty().addListener(new ChangeListener<String>() {
 		    @Override

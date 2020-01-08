@@ -1,9 +1,13 @@
 package main;
 
+import java.util.concurrent.TimeUnit;
+
+import javafx.application.Application;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import stratergies.SortStratergy;
+import utils.DelayCreator;
 import utils.Observable;
 import utils.Observer;
 
@@ -25,10 +29,13 @@ public class CanvasPanel extends Canvas implements Observer {
 	
 	@Override
 	public void update(Observable o) {
+		DelayCreator.delay(((SortStratergy) o).getDelay());
 		this.resetCanvas();
-		
-		
-		double[] array = ((SortStratergy) o).getArray();
+		this.renderArray((SortStratergy) o);
+	}
+	
+	private void renderArray(SortStratergy stratergy) {
+		double[] array = stratergy.getArray();
 		double rectangleWidth = (double) Settings.canvasWidth / (double) array.length;
 		double maxHeight = Double.MIN_VALUE;
 		
@@ -37,7 +44,7 @@ public class CanvasPanel extends Canvas implements Observer {
 				maxHeight = array[i];
 		}
 		
-		if (((SortStratergy) o).getSortStatus() == 2) {
+		if (stratergy.getSortStatus() == 2) {
 			this.gc.setFill(Settings.sortedColor);
 		} else {
 			this.gc.setFill(Settings.barColor);			

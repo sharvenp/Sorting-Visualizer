@@ -6,7 +6,7 @@ public class CurrentSortStratergy {
 	private static CurrentSortStratergy instance = null;
 
 	
-	public static CurrentSortStratergy getInstance() {
+	public static synchronized CurrentSortStratergy getInstance() {
 		if (instance == null)
 			instance = new CurrentSortStratergy();
 		

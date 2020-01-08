@@ -1,7 +1,5 @@
 package stratergies;
 
-import utils.DelayCreator;
-
 public class BubbleSort extends SortStratergy {
 
 	@Override
@@ -18,9 +16,8 @@ public class BubbleSort extends SortStratergy {
 					this.sortingArray[i+1] = this.sortingArray[i];
 					this.sortingArray[i] = temp;
 					sorted = false;
-					this.notifyObservers();			
-					DelayCreator.delay(this.delay);
 				}
+				this.notifyObservers();			
 			}
 		}
 
