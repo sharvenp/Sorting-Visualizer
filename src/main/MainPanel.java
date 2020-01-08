@@ -2,6 +2,7 @@ package main;
 
 import controllers.GenerateButtonHandler;
 import controllers.SortButtonHandler;
+import controllers.StopButtonHandler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
@@ -60,6 +61,7 @@ public class MainPanel extends GridPane {
 		
 		HBox sortingAlgorithmHBox = new HBox();
 		sortingAlgorithmHBox.setSpacing(5);
+		sortingAlgorithmHBox.setAlignment(Pos.BASELINE_LEFT);
 		Label sortingAlgorithmLabel = new Label("Sorting Algorithm:");
 		ComboBox<String> sortingAlgorithmComboBox = new ComboBox<>();
 		for (String s : Settings.algorithms) {
@@ -71,6 +73,7 @@ public class MainPanel extends GridPane {
 		
 		HBox arraySizeHBox = new HBox();
 		arraySizeHBox.setSpacing(5);
+		arraySizeHBox.setAlignment(Pos.BASELINE_LEFT);
 		Label arraySizeLabel = new Label("Array Size:");
 		final TextField arraySizeInput = new TextField("100");
 		arraySizeInput.setPrefWidth(100);
@@ -88,37 +91,39 @@ public class MainPanel extends GridPane {
 		
 		HBox delayHBox = new HBox();
 		delayHBox.setSpacing(5);
+		delayHBox.setAlignment(Pos.BASELINE_LEFT);
 		Label delayLabel = new Label("Step Delay:");
 		Slider delaySlider = new Slider(1, 1000, 1);
-		delaySlider.setShowTickMarks(true);
-		delaySlider.setMajorTickUnit(10);
-		delaySlider.setMinorTickCount(0);
+		delaySlider.setPrefWidth(200);
 		Label delayValue = new Label("1");
-		delayValue.setPrefWidth(40);
+		delayValue.setPrefWidth(45);
 		delaySlider.valueProperty().addListener(new ChangeListener<Number>() {
 	            public void changed(ObservableValue<? extends Number> ov,
 	                Number oldVal, Number newVal) {
-	            	long val = newVal.longValue() * 10;
+	            	long val = 5*(Math.round(newVal.doubleValue()/5));
+	            	
+	            	val = Math.max(val, 1);
+	            	
 	            	delaySlider.setValue(val);
-	            	delayValue.setText(Long.toString(val));
+	            	delayValue.setText(Long.toString(val) + " ms");
 	            	if (CurrentSortStratergy.getInstance().getCurrentStratergy() != null)
 	            		CurrentSortStratergy.getInstance().getCurrentStratergy().setDelay(val);
 	            }
         	});
 		delayHBox.getChildren().addAll(delayLabel, delaySlider, delayValue);
 		
-		
 		HBox buttonHBox = new HBox();
 		buttonHBox.setSpacing(5);
 		buttonHBox.setAlignment(Pos.CENTER);
 		Button generateButton = new Button("Generate Array");
 		generateButton.setOnAction(new GenerateButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput));
-		Button sortButton = new Button("Sort");
+		Button sortButton = new Button("Start Sort");
 		sortButton.setOnAction(new SortButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput, delaySlider));
-		buttonHBox.getChildren().addAll(generateButton, sortButton);
+		Button stopButton = new Button("Stop Sort");
+		stopButton.setOnAction(new StopButtonHandler());
+		buttonHBox.getChildren().addAll(generateButton, sortButton, stopButton);
 		
 		vBox.getChildren().addAll(sortingAlgorithmHBox, arraySizeHBox, delayHBox, buttonHBox);
-		
 		return vBox;
 		
 	}

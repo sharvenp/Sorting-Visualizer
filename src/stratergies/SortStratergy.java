@@ -30,7 +30,7 @@ public abstract class SortStratergy {
 	public void runAlgorithm() {
 		this.sortStatus = 1;
 		this.sort();
-		this.sortStatus = 2;
+		this.stopSorting();
 		this.updateCanvas();
 	}
 	
@@ -46,6 +46,10 @@ public abstract class SortStratergy {
         });
 			
 		DelayCreator.delay(this.delay);
+	}
+	
+	public void stopSorting() {
+		this.sortStatus = 2;
 	}
 	
 	public abstract void sort();

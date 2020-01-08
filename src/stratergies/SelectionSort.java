@@ -22,6 +22,9 @@ public class SelectionSort extends SortStratergy {
             sortingArray[i] = temp; 
             
             this.updateCanvas();
+            
+            if (this.sortStatus == 2)
+            	return;
         } 
 	}
 

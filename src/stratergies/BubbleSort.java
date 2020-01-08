@@ -21,6 +21,10 @@ public class BubbleSort extends SortStratergy {
 				this.i1 = i;
 				this.i2 = i + 1;
 				super.updateCanvas();
+				
+				if (this.sortStatus == 2)
+					return;
+				
 //				ToneGenerator.generateTone(sortingArray[i]);
 			}
 		}
@@ -30,7 +34,7 @@ public class BubbleSort extends SortStratergy {
 			
 		Color barColor = Color.rgb(255, 100, 100);
 		
-		if (this.getSortStatus() == 2) {
+		if (this.sortStatus == 2) {
 			barColor = Settings.sortedColor;
 		}
 		
