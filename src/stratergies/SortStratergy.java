@@ -1,43 +1,26 @@
 package stratergies;
 
 import utils.DelayCreator;
-import utils.Observable;
-
-import java.util.Random;
-
+import utils.ToneGenerator;
 import javafx.application.Platform;
+import main.CanvasPanel;
 
 
-public abstract class SortStratergy extends Observable {
+public abstract class SortStratergy {
 
-	protected double[] sortingArray;
+	public static double[] sortingArray = null;
 	protected long delay;
 	protected int sortStatus = 0;
 	
-	public void generateShuffledArray(int size) {
-		
-		this.sortingArray = new double[size];
-		
-		for (int i = 0; i < this.sortingArray.length; i++) {
-			sortingArray[i] = i+1;
-		}
-		
-		Random r = new Random();
-		
-		for (int i = 0; i < this.sortingArray.length; i++) {
-			int ri = r.nextInt(this.sortingArray.length);
-			double temp = this.sortingArray[ri];
-			this.sortingArray[ri] = this.sortingArray[i];
-			this.sortingArray[i] = temp;
-		}
+	protected CanvasPanel panel;
+	
+	public void setPanel(CanvasPanel panel) {
+		this.panel = panel;
+		this.updateCanvas();
 	}
 	
 	public void setDelay(long delay) {
 		this.delay = delay;
-	}
-	
-	public double[] getArray() {
-		return this.sortingArray;
 	}
 	
 	public int getSortStatus() {
@@ -48,16 +31,17 @@ public abstract class SortStratergy extends Observable {
 		this.sortStatus = 1;
 		this.sort();
 		this.sortStatus = 2;
-		this.notifyCanvas();
+		this.updateCanvas();
 	}
 	
-	public void notifyCanvas() {
+	protected void updateCanvas() {
 		Platform.runLater(new Runnable() 
         {
             @Override
             public void run() 
             {
-            	notifyObservers();	
+            	panel.clearCanvas();
+            	renderArray();
             }
         });
 			
@@ -65,4 +49,7 @@ public abstract class SortStratergy extends Observable {
 	}
 	
 	public abstract void sort();
+	
+	public abstract void renderArray();
+	
 }

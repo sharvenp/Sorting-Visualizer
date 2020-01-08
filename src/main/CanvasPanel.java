@@ -1,70 +1,43 @@
 package main;
 
-
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import stratergies.SortStratergy;
-import utils.Observable;
-import utils.Observer;
 
-public class CanvasPanel extends Canvas implements Observer {
+public class CanvasPanel extends Canvas {
 
-	private GraphicsContext gc;
-	
 	public CanvasPanel() {
 		super(Settings.canvasWidth, Settings.canvasHeight);
-		this.gc = this.getGraphicsContext2D();
 		
-		this.resetCanvas();
-	}
-
-	private void resetCanvas() {
-		this.gc.setFill(Settings.backgroundColor);
-		this.gc.fillRect(0, 0, this.getWidth(), this.getHeight());
+		this.clearCanvas();
 	}
 	
-	@Override
-	public void update(Observable o) {
-		this.resetCanvas();
-		this.renderArray((SortStratergy) o);
+	public void clearCanvas() {
+		GraphicsContext gc = this.getGraphicsContext2D();
+		
+		gc.setFill(Settings.backgroundColor);
+		gc.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 	
-	private void renderArray(SortStratergy stratergy) {
-		double[] array = stratergy.getArray();
-		double rectangleWidth = (double) Settings.canvasWidth / (double) array.length;
-		double maxHeight = Double.MIN_VALUE;
+	public void renderRectangle(int index, double value, Color color) {
 		
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] > maxHeight)
-				maxHeight = array[i];
-		}
+		GraphicsContext gc = this.getGraphicsContext2D();
 		
-		if (stratergy.getSortStatus() == 2) {
-			this.gc.setFill(Settings.sortedColor);
-		} else {
-			this.gc.setFill(Settings.barColor);			
-		}
+		double rectangleWidth = (double) Settings.canvasWidth / (double) SortStratergy.sortingArray.length;
+		double maxHeight = (double) (SortStratergy.sortingArray.length - 1);
 		
-		Color barColor = Settings.barColor;
+		double x = index * rectangleWidth;
+		double heightPercentage = SortStratergy.sortingArray[index] / maxHeight;
+		double y = Settings.canvasHeight * (1d - heightPercentage);
 		
-		if (stratergy.getSortStatus() == 2) {
-			barColor = Settings.sortedColor;
-		}
+		gc.setFill(Settings.borderColor);
+		gc.fillRect(x - Settings.borderStroke, y - Settings.borderStroke, 
+				rectangleWidth + Settings.borderStroke, 
+				(Settings.canvasHeight * heightPercentage) + Settings.borderStroke);
 		
-		for (int i = 0; i < array.length; i++) {
-			double x = i * rectangleWidth;
-			double heightPercentage = array[i] / maxHeight;
-			double y = Settings.canvasHeight * (1d - heightPercentage);
-			
-			this.gc.setFill(Settings.borderColor);
-			this.gc.fillRect(x - Settings.borderStroke, y - Settings.borderStroke, 
-					rectangleWidth + Settings.borderStroke, (Settings.canvasHeight * heightPercentage) + Settings.borderStroke);
-			
-			this.gc.setFill(barColor);
-			this.gc.fillRect(x, y, rectangleWidth, Settings.canvasHeight * heightPercentage);
-			
-		}
+		gc.setFill(color);
+		gc.fillRect(x, y, rectangleWidth, Settings.canvasHeight * heightPercentage);
 	}
 	
 }
