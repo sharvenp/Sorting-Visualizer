@@ -1,14 +1,10 @@
 package controllers;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.util.Duration;
 import main.CanvasPanel;
 import stratergies.CurrentSortStratergy;
 import stratergies.SortStratergy;
@@ -65,16 +61,18 @@ public class SortButtonHandler implements EventHandler<ActionEvent> {
 			sortStratergy.setDelay(delay);
 			sortStratergy.generateShuffledArray(size);
 			sortStratergy.addObserver(this.canvasPanel);
-
-			Task task = new Task<Void>() {
-				@Override 
-				public Void call() {
-			        sortStratergy.runAlgorithm();
-			        return null;
-			    }
+			
+			Runnable task = new Runnable() {
+				@Override
+				public void run() {
+					sortStratergy.runAlgorithm();
+				}
 			};
 			
-			new Thread(task).start();
+	        Thread backgroundThread = new Thread(task);
+	        backgroundThread.setDaemon(true);
+	        backgroundThread.start();
+			
 		}
 	}
 }

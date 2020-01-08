@@ -12,6 +12,6 @@ public class Settings {
 	public static String[] algorithms = {"Bubble", "Selection", "Insertion"};
 	
 	// Colors
-	public static Color barColor = Color.rgb(255, 150, 150);
-	public static Color sortedColor = Color.rgb(150, 255, 150);
+	public static Color barColor = Color.rgb(255, 120, 120);
+	public static Color sortedColor = Color.rgb(120, 255, 120);
 }

@@ -1,9 +1,13 @@
 package stratergies;
 
+import utils.DelayCreator;
 import utils.Observable;
+
 import java.util.Random;
 
-//public abstract class SortStratergy extends Observable implements Runnable {
+import javafx.application.Platform;
+
+
 public abstract class SortStratergy extends Observable {
 
 	protected double[] sortingArray;
@@ -32,10 +36,6 @@ public abstract class SortStratergy extends Observable {
 		this.delay = delay;
 	}
 	
-	public long getDelay() {
-		return this.delay;
-	}
-	
 	public double[] getArray() {
 		return this.sortingArray;
 	}
@@ -44,13 +44,24 @@ public abstract class SortStratergy extends Observable {
 		return this.sortStatus;
 	}
 	
-//	@Override
-//	public void run() {
 	public void runAlgorithm() {
 		this.sortStatus = 1;
 		this.sort();
 		this.sortStatus = 2;
-		this.notifyObservers();
+		this.notifyCanvas();
+	}
+	
+	public void notifyCanvas() {
+		Platform.runLater(new Runnable() 
+        {
+            @Override
+            public void run() 
+            {
+            	notifyObservers();	
+            }
+        });
+			
+		DelayCreator.delay(this.delay);
 	}
 	
 	public abstract void sort();

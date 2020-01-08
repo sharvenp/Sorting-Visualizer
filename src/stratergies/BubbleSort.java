@@ -17,10 +17,9 @@ public class BubbleSort extends SortStratergy {
 					this.sortingArray[i] = temp;
 					sorted = false;
 				}
-				this.notifyObservers();			
+				super.notifyCanvas();
 			}
 		}
-
 	}
 
 }

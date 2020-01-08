@@ -1,13 +1,10 @@
 package main;
 
-import java.util.concurrent.TimeUnit;
 
-import javafx.application.Application;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import stratergies.SortStratergy;
-import utils.DelayCreator;
 import utils.Observable;
 import utils.Observer;
 
@@ -29,7 +26,6 @@ public class CanvasPanel extends Canvas implements Observer {
 	
 	@Override
 	public void update(Observable o) {
-		DelayCreator.delay(((SortStratergy) o).getDelay());
 		this.resetCanvas();
 		this.renderArray((SortStratergy) o);
 	}
