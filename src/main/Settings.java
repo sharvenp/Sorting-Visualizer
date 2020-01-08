@@ -13,7 +13,7 @@ public class Settings {
 	
 	// Bar Appearance
 	public static Color backgroundColor = Color.BLACK;
-	public static Color sortedColor = Color.rgb(120, 255, 120);
+	public static Color sortedColor = Color.rgb(100, 255, 100);
 	public static Color borderColor = Color.BLACK;
 	public static double borderStroke = 0.3;
 	

@@ -13,17 +13,24 @@ public class BubbleSort extends SortStratergy {
 	public void sort() {
 		for (int j = 0; j < sortingArray.length - 2; j++) {
 			for (int i = 0; i < sortingArray.length - 1 - j; i++) {
-				if (sortingArray[i] > sortingArray[i+1]) {
-					double temp = sortingArray[i+1];
-					sortingArray[i+1] = sortingArray[i];
-					sortingArray[i] = temp;
-				}
-				this.i1 = i;
-				this.i2 = i + 1;
-				super.updateCanvas();
 				
 				if (this.sortStatus == 2)
 					return;
+				
+				this.i1 = i;
+				this.i2 = i + 1;
+				
+				if (sortingArray[i] > sortingArray[i+1]) {
+					
+					super.updateCanvas(this.delay);
+					
+					double temp = sortingArray[i+1];
+					sortingArray[i+1] = sortingArray[i];
+					sortingArray[i] = temp;
+					
+					super.updateCanvas(this.delay);
+				}
+				super.updateCanvas(this.delay);
 				
 //				ToneGenerator.generateTone(sortingArray[i]);
 			}
@@ -39,13 +46,14 @@ public class BubbleSort extends SortStratergy {
 		}
 		
 		for (int i = 0; i < sortingArray.length; i++) {
+		
+			Color currColor = barColor;
 			
 			if ((i == this.i1 || i == this.i2) && this.sortStatus != 2) {
-				this.panel.renderRectangle(i, sortingArray[i], Color.rgb(100, 100, 255));
-				continue;
+				currColor = Color.rgb(100, 100, 255);
 			}
 			
-			this.panel.renderRectangle(i, sortingArray[i], barColor);
+			this.panel.renderRectangle(i, sortingArray[i], currColor);
 		}
 	}
 

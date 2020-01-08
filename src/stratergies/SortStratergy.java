@@ -16,7 +16,7 @@ public abstract class SortStratergy {
 	
 	public void setPanel(CanvasPanel panel) {
 		this.panel = panel;
-		this.updateCanvas();
+		this.updateCanvas(0);
 	}
 	
 	public void setDelay(long delay) {
@@ -31,10 +31,10 @@ public abstract class SortStratergy {
 		this.sortStatus = 1;
 		this.sort();
 		this.stopSorting();
-		this.updateCanvas();
+		this.updateCanvas(0);
 	}
 	
-	protected void updateCanvas() {
+	protected void updateCanvas(long delay) {
 		Platform.runLater(new Runnable() 
         {
             @Override
@@ -45,7 +45,7 @@ public abstract class SortStratergy {
             }
         });
 			
-		DelayCreator.delay(this.delay);
+		DelayCreator.delay(delay);
 	}
 	
 	public void stopSorting() {
