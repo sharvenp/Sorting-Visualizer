@@ -20,7 +20,7 @@ public class CanvasPanel extends Canvas implements Observer {
 	}
 
 	private void resetCanvas() {
-		this.gc.setFill(Color.BLACK);
+		this.gc.setFill(Settings.backgroundColor);
 		this.gc.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 	
@@ -46,11 +46,24 @@ public class CanvasPanel extends Canvas implements Observer {
 			this.gc.setFill(Settings.barColor);			
 		}
 		
+		Color barColor = Settings.barColor;
+		
+		if (stratergy.getSortStatus() == 2) {
+			barColor = Settings.sortedColor;
+		}
+		
 		for (int i = 0; i < array.length; i++) {
 			double x = i * rectangleWidth;
 			double heightPercentage = array[i] / maxHeight;
 			double y = Settings.canvasHeight * (1d - heightPercentage);
+			
+			this.gc.setFill(Settings.borderColor);
+			this.gc.fillRect(x - Settings.borderStroke, y - Settings.borderStroke, 
+					rectangleWidth + Settings.borderStroke, (Settings.canvasHeight * heightPercentage) + Settings.borderStroke);
+			
+			this.gc.setFill(barColor);
 			this.gc.fillRect(x, y, rectangleWidth, Settings.canvasHeight * heightPercentage);
+			
 		}
 	}
 	

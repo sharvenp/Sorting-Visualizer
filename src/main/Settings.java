@@ -11,7 +11,10 @@ public class Settings {
 	// Sorting Algorithms
 	public static String[] algorithms = {"Bubble", "Selection", "Insertion"};
 	
-	// Colors
+	// Bar Appearance
+	public static Color backgroundColor = Color.BLACK;
 	public static Color barColor = Color.rgb(255, 120, 120);
 	public static Color sortedColor = Color.rgb(120, 255, 120);
+	public static Color borderColor = Color.BLACK;
+	public static double borderStroke = 0.3;
 }
