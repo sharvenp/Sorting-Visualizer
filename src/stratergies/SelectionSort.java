@@ -19,8 +19,11 @@ public class SelectionSort extends SortStratergy {
             	return;
 
         	this.currI = i;
+        	this.findMinI = -1;
+        	this.minI = i;
         	
             int min_idx = i; 
+            
             for (int j = i+1; j < n; j++) {
             	this.findMinI = j;
             	

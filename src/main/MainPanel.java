@@ -76,7 +76,7 @@ public class MainPanel extends GridPane {
 		arraySizeHBox.setAlignment(Pos.BASELINE_LEFT);
 		Label arraySizeLabel = new Label("Array Size:");
 		final TextField arraySizeInput = new TextField("100");
-		arraySizeInput.setPrefWidth(100);
+		arraySizeInput.setPrefWidth(70);
 		arraySizeInput.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, 

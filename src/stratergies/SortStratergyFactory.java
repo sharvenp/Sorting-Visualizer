@@ -13,7 +13,9 @@ public class SortStratergyFactory {
 			case "Bubble":
 				stratergy = new BubbleSort();
 				break;
-				
+			case "Insertion":
+				stratergy = new InsertionSort();
+				break;
 		}		
 		
 		CurrentSortStratergy.getInstance().setStratergy(stratergy);
