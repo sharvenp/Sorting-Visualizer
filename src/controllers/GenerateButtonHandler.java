@@ -1,13 +1,13 @@
 package controllers;
 
+import algorithms.CurrentSortStratergy;
+import algorithms.SortStratergy;
+import algorithms.SortStratergyFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import main.CanvasPanel;
-import stratergies.CurrentSortStratergy;
-import stratergies.SortStratergy;
-import stratergies.SortStratergyFactory;
 import utils.AlertBox;
 import utils.ArrayGenerator;
 

@@ -2,7 +2,7 @@ package utils;
 
 import java.util.Random;
 
-import stratergies.SortStratergy;
+import algorithms.SortStratergy;
 
 public class ArrayGenerator {
 

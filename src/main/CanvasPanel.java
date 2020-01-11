@@ -1,9 +1,10 @@
 package main;
 
+import algorithms.SortStratergy;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import stratergies.SortStratergy;
+import utils.Settings;
 
 public class CanvasPanel extends Canvas {
 
@@ -32,9 +33,15 @@ public class CanvasPanel extends Canvas {
 		double y = Settings.canvasHeight * (1d - heightPercentage);
 		
 		gc.setFill(Settings.borderColor);
-		gc.fillRect(x - Settings.borderStroke, y - Settings.borderStroke, 
-				rectangleWidth + Settings.borderStroke, 
-				(Settings.canvasHeight * heightPercentage) + Settings.borderStroke);
+		double strokePercentage = (100 / SortStratergy.sortingArray.length);
+		if (strokePercentage > 1) {
+			strokePercentage = 1d;
+		}
+		double stroke = Settings.borderStroke * strokePercentage;
+		
+		gc.fillRect(x - stroke, y - stroke, 
+				rectangleWidth + stroke, 
+				(Settings.canvasHeight * heightPercentage) + stroke);
 		
 		gc.setFill(color);
 		gc.fillRect(x, y, rectangleWidth, Settings.canvasHeight * heightPercentage);

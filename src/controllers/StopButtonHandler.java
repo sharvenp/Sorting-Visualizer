@@ -1,8 +1,8 @@
 package controllers;
 
+import algorithms.CurrentSortStratergy;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import stratergies.CurrentSortStratergy;
 
 public class StopButtonHandler implements EventHandler<ActionEvent> {
 

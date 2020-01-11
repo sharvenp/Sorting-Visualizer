@@ -1,5 +1,6 @@
 package main;
 
+import algorithms.CurrentSortStratergy;
 import controllers.GenerateButtonHandler;
 import controllers.SortButtonHandler;
 import controllers.StopButtonHandler;
@@ -21,7 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import stratergies.CurrentSortStratergy;
+import utils.Settings;
 
 public class MainPanel extends GridPane {
 

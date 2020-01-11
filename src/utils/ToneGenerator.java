@@ -2,8 +2,7 @@ package utils;
 
 import javax.sound.sampled.*;
 
-import main.Settings;
-import stratergies.SortStratergy;
+import algorithms.SortStratergy;
 public class ToneGenerator {
 	
     public static float SAMPLE_RATE = 8000f;
