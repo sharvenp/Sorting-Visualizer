@@ -7,6 +7,7 @@ public class InsertionSort extends SortStratergy {
 
 	private int currJ = -1;
 	private int currI = -1;
+	private int currJ1 = -1;
 	
 	@Override
 	public void sort() {
@@ -31,6 +32,7 @@ public class InsertionSort extends SortStratergy {
             } 
             
             sortingArray[j + 1] = key; 
+            this.currJ1 = j + 1;
             
             this.updateCanvas(this.delay);
         } 
@@ -53,6 +55,8 @@ public class InsertionSort extends SortStratergy {
 					currColor = Color.rgb(255, 100, 255);
 				} else if (i == this.currI) {
 					currColor = Color.rgb(100, 100, 255);
+				} else if (i == this.currJ1) {
+					currColor = Color.rgb(255, 255, 100);
 				}
 			}
 			
