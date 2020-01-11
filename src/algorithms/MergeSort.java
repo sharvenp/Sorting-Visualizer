@@ -21,13 +21,6 @@ public class MergeSort extends SortStratergy {
     	if (this.sortStatus == 2)
     		return;
   
-    	this.low = l;
-    	this.high = r;
-    	
-    	this.mid = m;
-    	
-    	this.updateCanvas(this.delay);
-    	
         int n1 = m - l + 1; 
         int n2 = r - m; 
   
@@ -85,13 +78,31 @@ public class MergeSort extends SortStratergy {
     	
     	if (l < r) 
         { 
-            int m = (l+r)/2; 
+            
+    		int m = (l+r)/2; 
+        	this.mid = m;
+        	
+        	this.low = l;
+        	this.high = r;
+        	
+        	this.updateCanvas(this.delay);
   
             sort(l, m); 
+            
+            this.mid = m;
+        	
+        	this.low = l;
+        	this.high = r;
             
             this.updateCanvas(this.delay);
             
             sort(m+1, r); 
+            
+            this.mid = m;
+        	
+        	this.low = l;
+        	this.high = r;
+            
             
             this.updateCanvas(this.delay);
             
