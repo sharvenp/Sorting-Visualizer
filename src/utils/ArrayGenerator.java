@@ -6,6 +6,11 @@ import algorithms.SortStratergy;
 
 public class ArrayGenerator {
 
+	/**
+	 * Generate a shuffled array with given size.
+	 * 
+	 * @param size the size of the array.
+	 */
 	public static void generateShuffledArray(int size) {
 			
 		SortStratergy.sortingArray = new double[size];

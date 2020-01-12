@@ -9,6 +9,7 @@ import javafx.stage.Stage;
  * Sets up MVC.
  * 
  * @author sharvenp
+ * 
  */
 public class RunVisualizer extends Application {
 

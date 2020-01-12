@@ -1,7 +1,18 @@
 package algorithms;
 
+/**
+ * Factory for generating a SortStratergy.
+ * 
+ * @author sharvenp
+ *
+ */
 public class SortStratergyFactory {
 
+	/**
+	 * Set the current SortStratergy based on the given name.
+	 * 
+	 * @param stratergyString the name of the stratergy.
+	 */
 	public static void setCurrentStratergy (String stratergyString) {
 		
 		SortStratergy stratergy = null;

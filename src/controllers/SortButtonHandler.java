@@ -12,6 +12,12 @@ import main.CanvasPanel;
 import utils.AlertBox;
 import utils.ArrayGenerator;
 
+/**
+ * Handles the SortButton action.
+ * 
+ * @author sharvenp
+ *
+ */
 public class SortButtonHandler implements EventHandler<ActionEvent> {
 
 	private CanvasPanel canvasPanel;
@@ -56,8 +62,9 @@ public class SortButtonHandler implements EventHandler<ActionEvent> {
 			SortStratergyFactory.setCurrentStratergy(selectedAlgoritm);
 			final SortStratergy sortStratergy = CurrentSortStratergy.getInstance().getCurrentStratergy();
 			sortStratergy.setDelay(delay);
-			
 			sortStratergy.setPanel(this.canvasPanel);
+			
+			// Run sorting on another thread.
 			
 			Runnable task = new Runnable() {
 				@Override

@@ -5,13 +5,18 @@ import utils.ToneGenerator;
 import javafx.application.Platform;
 import main.CanvasPanel;
 
-
+/**
+ * Represents a sorting algorithm. 
+ * 
+ * @author sharvenp
+ *
+ */
 public abstract class SortStratergy {
 
 	public static double[] sortingArray = null;
+	
 	protected long delay;
 	protected int sortStatus = 0;
-	
 	protected CanvasPanel panel;
 	
 	public void setPanel(CanvasPanel panel) {
@@ -27,6 +32,9 @@ public abstract class SortStratergy {
 		return this.sortStatus;
 	}
 	
+	/**
+	 * Run the sorting algorithm.
+	 */
 	public void runAlgorithm() {
 		this.sortStatus = 1;
 		this.sort();
@@ -35,6 +43,8 @@ public abstract class SortStratergy {
 	}
 	
 	protected void updateCanvas(long delay) {
+		
+		// Run render code after all GUI code has run.
 		Platform.runLater(new Runnable() 
         {
             @Override
@@ -52,8 +62,14 @@ public abstract class SortStratergy {
 		this.sortStatus = 2;
 	}
 	
+	/**
+	 * Sort the array based on the stratergy.
+	 */
 	public abstract void sort();
 	
+	/**
+	 * Render the array on the canvas.
+	 */
 	public abstract void renderArray();
 	
 }

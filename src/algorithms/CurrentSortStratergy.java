@@ -1,5 +1,11 @@
 package algorithms;
 
+/**
+ * Maintains reference to the current SortStratergy for global reference.
+ * 
+ * @author sharvenp
+ *
+ */
 public class CurrentSortStratergy {
 
 	private SortStratergy currentStratergy = null;

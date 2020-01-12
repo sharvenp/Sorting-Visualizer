@@ -2,6 +2,12 @@ package utils;
 
 import javafx.scene.paint.Color;
 
+/**
+ * Global settings for the application.
+ * 
+ * @author sharvenp
+ *
+ */
 public class Settings {
 
 	// Canvas Appearance

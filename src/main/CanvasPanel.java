@@ -6,6 +6,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import utils.Settings;
 
+/**
+ * 
+ * Represents the canvas on which the bars are drawn.
+ * 
+ * @author sharvenp
+ *
+ */
 public class CanvasPanel extends Canvas {
 
 	public CanvasPanel() {
@@ -14,6 +21,9 @@ public class CanvasPanel extends Canvas {
 		this.clearCanvas();
 	}
 	
+	/**
+	 * Set canvas to the background color.
+	 */
 	public void clearCanvas() {
 		GraphicsContext gc = this.getGraphicsContext2D();
 		
@@ -21,6 +31,12 @@ public class CanvasPanel extends Canvas {
 		gc.fillRect(0, 0, this.getWidth(), this.getHeight());
 	}
 	
+	/**
+	 * 
+	 * @param index the index of the drawn rectangle.
+	 * @param value the height of the drawn rectangle.
+	 * @param color the color of the drawn rectangle.
+	 */
 	public void renderRectangle(int index, double value, Color color) {
 		
 		GraphicsContext gc = this.getGraphicsContext2D();

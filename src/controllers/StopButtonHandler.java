@@ -4,6 +4,12 @@ import algorithms.CurrentSortStratergy;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/**
+ * Handles the SortButton action.
+ * 
+ * @author sharvenp
+ *
+ */
 public class StopButtonHandler implements EventHandler<ActionEvent> {
 
 	@Override

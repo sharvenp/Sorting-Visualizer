@@ -53,6 +53,11 @@ public class MainPanel extends GridPane {
 		stage.show();
 	}
 	
+	/**
+	 * Create the side panel for the UI.
+	 * 
+	 * @return the VBox element for the side panel.
+	 */
 	private VBox makeUIElements() {
 		
 		VBox vBox = new VBox();

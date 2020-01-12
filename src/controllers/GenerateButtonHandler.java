@@ -11,6 +11,12 @@ import main.CanvasPanel;
 import utils.AlertBox;
 import utils.ArrayGenerator;
 
+/**
+ * Handles the GenerateButton action.
+ * 
+ * @author sharvenp
+ *
+ */
 public class GenerateButtonHandler implements EventHandler<ActionEvent> {
 
 	CanvasPanel panel;
