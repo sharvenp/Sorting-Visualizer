@@ -3,6 +3,14 @@ package utils;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Display an pop up dialogue box to notify the user.
+ * 
+ * Built on top of the JavaFX Alert class to make easier use.
+ * 
+ * @author sharvenp
+ *
+ */
 public class AlertBox {
 
 	public static void showAlert(String title, String header, String context, AlertType alertType) {

@@ -41,7 +41,7 @@ public class CanvasPanel extends Canvas {
 		
 		GraphicsContext gc = this.getGraphicsContext2D();
 		
-		double rectangleWidth = (double) Settings.canvasWidth / (double) SortStratergy.sortingArray.length;
+		double rectangleWidth = (double) Settings.canvasWidth / (double) (SortStratergy.sortingArray.length - 1);
 		double maxHeight = (double) (SortStratergy.sortingArray.length - 1);
 		
 		double x = index * rectangleWidth;
