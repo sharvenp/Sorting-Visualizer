@@ -8,7 +8,7 @@ package algorithms;
  */
 public class CurrentSortStratergy {
 
-	private SortStratergy currentStratergy = null;
+	private SortStratergy currentStratergy = new NullSort();
 	private static CurrentSortStratergy instance = null;
 
 	

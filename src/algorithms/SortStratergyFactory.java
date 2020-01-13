@@ -30,6 +30,9 @@ public class SortStratergyFactory {
 			case "Merge":
 				stratergy = new MergeSort();
 				break;
+			default:
+				stratergy = new NullSort();
+				break;
 		}		
 		
 		CurrentSortStratergy.getInstance().setStratergy(stratergy);

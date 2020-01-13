@@ -1,8 +1,10 @@
 package algorithms;
 
 import utils.DelayCreator;
+import utils.Settings;
 import utils.ToneGenerator;
 import javafx.application.Platform;
+import javafx.scene.paint.Color;
 import main.CanvasPanel;
 
 /**
@@ -42,7 +44,7 @@ public abstract class SortStratergy {
 		this.updateCanvas(0);
 	}
 	
-	protected void updateCanvas(long delay) {
+	public void updateCanvas(long delay) {
 		
 		// Run render code after all GUI code has run.
 		Platform.runLater(new Runnable() 
@@ -70,6 +72,17 @@ public abstract class SortStratergy {
 	/**
 	 * Render the array on the canvas.
 	 */
-	public abstract void renderArray();
+	public void renderArray() {
+		Color barColor = Settings.defaultColor;
+		
+		if (this.sortStatus == 2) {
+			barColor = Settings.sortedColor;
+		}
+		
+		for (int i = 0; i < sortingArray.length; i++) {
+		
+			this.panel.renderRectangle(i, sortingArray[i], barColor);
+		}
+	}
 	
 }

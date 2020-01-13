@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -118,18 +119,26 @@ public class MainPanel extends GridPane {
         	});
 		delayHBox.getChildren().addAll(delayLabel, delaySlider, delayValue);
 		
+		
+		HBox showGenerationBox = new HBox();
+		showGenerationBox.setSpacing(5);
+		showGenerationBox.setAlignment(Pos.BASELINE_LEFT);
+		Label showGenerationLabel = new Label("Show Array Generation: ");
+		CheckBox showGenerationCheckBox = new CheckBox();
+		showGenerationBox.getChildren().addAll(showGenerationLabel, showGenerationCheckBox);
+		
 		HBox buttonHBox = new HBox();
 		buttonHBox.setSpacing(5);
 		buttonHBox.setAlignment(Pos.CENTER);
 		Button generateButton = new Button("Generate Array");
-		generateButton.setOnAction(new GenerateButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput));
+		generateButton.setOnAction(new GenerateButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput, showGenerationCheckBox));
 		Button sortButton = new Button("Start Sort");
-		sortButton.setOnAction(new SortButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput, delaySlider));
+		sortButton.setOnAction(new SortButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput, delaySlider, showGenerationCheckBox));
 		Button stopButton = new Button("Stop Sort");
 		stopButton.setOnAction(new StopButtonHandler());
 		buttonHBox.getChildren().addAll(generateButton, sortButton, stopButton);
 		
-		vBox.getChildren().addAll(sortingAlgorithmHBox, arraySizeHBox, delayHBox, buttonHBox);
+		vBox.getChildren().addAll(sortingAlgorithmHBox, arraySizeHBox, delayHBox, showGenerationBox, buttonHBox);
 		return vBox;
 		
 	}

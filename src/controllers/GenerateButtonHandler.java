@@ -1,10 +1,14 @@
 package controllers;
 
+import javax.crypto.NullCipher;
+
 import algorithms.CurrentSortStratergy;
+import algorithms.NullSort;
 import algorithms.SortStratergy;
 import algorithms.SortStratergyFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import main.CanvasPanel;
@@ -19,14 +23,16 @@ import utils.ArrayGenerator;
  */
 public class GenerateButtonHandler implements EventHandler<ActionEvent> {
 
-	CanvasPanel panel;
+	private CanvasPanel panel;
 	private ComboBox<String> sortingAlgorithm;
 	private TextField arraySizeInput;
+	private CheckBox showGenerationBox;
 	
-	public GenerateButtonHandler(CanvasPanel panel, ComboBox<String> sortingAlgorithm, TextField arraySize) {
+	public GenerateButtonHandler(CanvasPanel panel, ComboBox<String> sortingAlgorithm, TextField arraySize, CheckBox showGenerationBox) {
 		this.panel = panel;
 		this.sortingAlgorithm = sortingAlgorithm;
 		this.arraySizeInput = arraySize;
+		this.showGenerationBox = showGenerationBox;
 	}
 	
 	@Override
@@ -34,7 +40,7 @@ public class GenerateButtonHandler implements EventHandler<ActionEvent> {
 		
 		String selectedAlgoritm = this.sortingAlgorithm.getValue();
 		
-		int size = 0;
+		final int size;
 		
 		try {
 			size = Integer.parseInt(this.arraySizeInput.getText());
@@ -44,17 +50,25 @@ public class GenerateButtonHandler implements EventHandler<ActionEvent> {
 			return;
 		}
 		
+		SortStratergy stratergy = new NullSort();
+		stratergy.setPanel(this.panel);
+		CurrentSortStratergy.getInstance().setStratergy(stratergy);
+		ArrayGenerator.initArray(size);
 		
-		if (CurrentSortStratergy.getInstance().getCurrentStratergy() == null) 
-			SortStratergyFactory.setCurrentStratergy(selectedAlgoritm);
-		
-		if (size != 0 && CurrentSortStratergy.getInstance().getCurrentStratergy() != null && 
-				CurrentSortStratergy.getInstance().getCurrentStratergy().getSortStatus() != 1) {
-
-			SortStratergyFactory.setCurrentStratergy(selectedAlgoritm);
-			final SortStratergy sortStratergy = CurrentSortStratergy.getInstance().getCurrentStratergy();
-			ArrayGenerator.generateShuffledArray(size);
-			sortStratergy.setPanel(this.panel);
+		if (this.showGenerationBox.isSelected()) {
+			// Run array generation on another thread to render it on the canvas
+			Runnable task = new Runnable() {
+				@Override
+				public void run() {
+					ArrayGenerator.generateShuffledArray(size, showGenerationBox.isSelected());
+				}
+			};
+			
+	        Thread backgroundThread = new Thread(task);
+	        backgroundThread.setDaemon(true);
+	        backgroundThread.start();
+		} else {
+			ArrayGenerator.generateShuffledArray(size, showGenerationBox.isSelected());
 		}
 		
 	}
