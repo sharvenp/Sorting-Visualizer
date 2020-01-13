@@ -2,7 +2,6 @@ package algorithms;
 
 import javafx.scene.paint.Color;
 import utils.Settings;
-import utils.ToneGenerator;
 
 public class BubbleSort extends SortStratergy {
 

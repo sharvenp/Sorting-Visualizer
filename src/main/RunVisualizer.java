@@ -19,6 +19,7 @@ public class RunVisualizer extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
+		@SuppressWarnings("unused")
 		MainPanel mainPanel = new MainPanel(stage);
 	}
 }

@@ -49,6 +49,7 @@ public class SortButtonHandler implements EventHandler<ActionEvent> {
 			
 			try {
 				size = Integer.parseInt(this.arraySizeInput.getText());
+				@SuppressWarnings("unused")
 				int a = 1 / size; // Zero check
 			} catch (Exception exception) {
 				AlertBox.showAlert("Invalid Input", "", "Invalid input for the array size.", AlertBox.errorType());

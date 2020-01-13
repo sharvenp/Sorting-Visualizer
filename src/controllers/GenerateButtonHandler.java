@@ -1,15 +1,12 @@
 package controllers;
 
-import javax.crypto.NullCipher;
 
 import algorithms.CurrentSortStratergy;
 import algorithms.NullSort;
 import algorithms.SortStratergy;
-import algorithms.SortStratergyFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import main.CanvasPanel;
 import utils.AlertBox;
@@ -24,13 +21,11 @@ import utils.ArrayGenerator;
 public class GenerateButtonHandler implements EventHandler<ActionEvent> {
 
 	private CanvasPanel panel;
-	private ComboBox<String> sortingAlgorithm;
 	private TextField arraySizeInput;
 	private CheckBox showGenerationBox;
 	
-	public GenerateButtonHandler(CanvasPanel panel, ComboBox<String> sortingAlgorithm, TextField arraySize, CheckBox showGenerationBox) {
+	public GenerateButtonHandler(CanvasPanel panel, TextField arraySize, CheckBox showGenerationBox) {
 		this.panel = panel;
-		this.sortingAlgorithm = sortingAlgorithm;
 		this.arraySizeInput = arraySize;
 		this.showGenerationBox = showGenerationBox;
 	}
@@ -38,12 +33,11 @@ public class GenerateButtonHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent e) {
 		
-		String selectedAlgoritm = this.sortingAlgorithm.getValue();
-		
 		final int size;
 		
 		try {
 			size = Integer.parseInt(this.arraySizeInput.getText());
+			@SuppressWarnings("unused")
 			int a = 1 / size; // Zero check
 		} catch (Exception exception) {
 			AlertBox.showAlert("Invalid Input", "", "Invalid input for the array size.", AlertBox.errorType());

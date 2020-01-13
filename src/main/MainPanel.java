@@ -131,7 +131,7 @@ public class MainPanel extends GridPane {
 		buttonHBox.setSpacing(5);
 		buttonHBox.setAlignment(Pos.CENTER);
 		Button generateButton = new Button("Generate Array");
-		generateButton.setOnAction(new GenerateButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput, showGenerationCheckBox));
+		generateButton.setOnAction(new GenerateButtonHandler(this.canvasPanel, arraySizeInput, showGenerationCheckBox));
 		Button sortButton = new Button("Start Sort");
 		sortButton.setOnAction(new SortButtonHandler(this.canvasPanel, sortingAlgorithmComboBox, arraySizeInput, delaySlider, showGenerationCheckBox));
 		Button stopButton = new Button("Stop Sort");

@@ -2,7 +2,6 @@ package algorithms;
 
 import utils.DelayCreator;
 import utils.Settings;
-import utils.ToneGenerator;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import main.CanvasPanel;
