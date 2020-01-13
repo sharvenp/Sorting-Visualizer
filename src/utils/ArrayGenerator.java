@@ -40,6 +40,10 @@ public class ArrayGenerator {
 			SortStratergy.sortingArray[i] = temp;
 		}
 		
+		for (int i = 0; i < size; i++) {
+			System.out.println(SortStratergy.sortingArray[i]);
+		}
+		
 		isGenerating = false;
 	}
 	
