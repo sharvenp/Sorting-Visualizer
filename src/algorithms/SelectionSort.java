@@ -9,6 +9,9 @@ public class SelectionSort extends SortStratergy {
 	private int currI = -1;
 	private int findMinI = -1;
 	
+	/**
+	 * Source: www.geeksforgeeks.org
+	 */
 	@Override
 	public void sort() {
 		int n = sortingArray.length; 

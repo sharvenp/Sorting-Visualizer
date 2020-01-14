@@ -1,5 +1,7 @@
 package controllers;
 
+import javax.sound.sampled.LineUnavailableException;
+
 import algorithms.CurrentSortStratergy;
 import algorithms.NullSort;
 import algorithms.SortStratergy;
@@ -14,6 +16,7 @@ import main.CanvasPanel;
 import utils.AlertBox;
 import utils.ArrayGenerator;
 import utils.DelayCreator;
+import utils.ToneGenerator;
 
 /**
  * Handles the SortButton action.
@@ -96,7 +99,7 @@ public class SortButtonHandler implements EventHandler<ActionEvent> {
 				final SortStratergy sortStratergy = CurrentSortStratergy.getInstance().getCurrentStratergy();
 				sortStratergy.setDelay(delay);
 				sortStratergy.setPanel(this.canvasPanel);
-				
+
 				// Run sorting on another thread.
 				
 				Runnable task = new Runnable() {

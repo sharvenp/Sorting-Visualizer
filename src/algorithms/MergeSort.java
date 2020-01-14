@@ -16,6 +16,9 @@ public class MergeSort extends SortStratergy {
 
 	}
 	
+	/**
+	 * Source: www.geeksforgeeks.org
+	 */
     void merge(int l, int m, int r) 
     { 
     	if (this.sortStatus == 2)
@@ -70,6 +73,9 @@ public class MergeSort extends SortStratergy {
         
     } 
   
+    /**
+	 * Source: www.geeksforgeeks.org
+	 */
     void sort(int l, int r) 
     { 
     	

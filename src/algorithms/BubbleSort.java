@@ -30,8 +30,6 @@ public class BubbleSort extends SortStratergy {
 					super.updateCanvas(this.delay);
 				}
 				super.updateCanvas(this.delay);
-				
-//				ToneGenerator.generateTone(sortingArray[i]);
 			}
 		}
 	}

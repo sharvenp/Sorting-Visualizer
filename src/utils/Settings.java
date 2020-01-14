@@ -29,6 +29,6 @@ public class Settings {
 	
 	// Tone settings
 	public static double toneVolume = 0.05;
-	public static int toneDuration = 10;
+	public static int toneDuration = 100;
 	public static double maxFrequency = 10000;
 }
